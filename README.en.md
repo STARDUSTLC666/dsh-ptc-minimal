@@ -15,7 +15,7 @@
 1. Add this package to a web profile (`package.json`):
 
    ```json
-   "dependencies": { "dsh-ptc-minimal": "^0.2.0" },
+   "dependencies": { "dsh-ptc-minimal": "^0.3.0" },
    "dsh": { "profile": { "bundles": [..., "dsh-ptc-minimal"] } }
    ```
 

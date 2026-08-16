@@ -19,7 +19,7 @@
 1. 把本包加入 web profile（`package.json`）：
 
    ```json
-   "dependencies": { "dsh-ptc-minimal": "^0.2.0" },
+   "dependencies": { "dsh-ptc-minimal": "^0.3.0" },
    "dsh": { "profile": { "bundles": [..., "dsh-ptc-minimal"] } }
    ```
 
