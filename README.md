@@ -32,6 +32,21 @@
 
 4. 新建会话时选择 **极简 PTC 模式**。
 
+## Windows Git Bash 配置
+
+预设内置的 Git Bash executor 可在 `agent.cordis.yml` 的 `gitbash-executor` 行覆盖：
+
+| 配置 | 默认 | 说明 |
+| :-- | :-- | :-- |
+| `shellPath` | 自动探测 | 固定 Git Bash 路径（如 `C:\\Program Files\\Git\\bin\\bash.exe`） |
+| `timeoutMs` | 120000 | 单次命令超时（毫秒） |
+| `maxTimeoutMs` | 600000 | 请求可要求的最大超时 |
+| `maxOutputBytes` | 64000 | 单次输出上限 |
+| `maxSpillBytes` | 67108864 | 输出溢出落盘上限 |
+| `graceMs` | 3000 | 超时后的宽限时间 |
+
+自动探测顺序：`GIT_BASH` → `Program Files\\Git` → `Program Files (x86)\\Git` → `LOCALAPPDATA\\Programs\\Git` → PATH。
+
 ## 目录结构
 
 ```

@@ -33,6 +33,21 @@
 - Subagents are enabled: `subagent`, `subagent_fork`, `subagent_control`, workflows, and Ralph.
 - `subagent_codex` and `subagent_claude_code` providers are disabled by default; remove their `disabled: true` lines to expose them.
 
+## Windows Git Bash configuration
+
+The preset-local Git Bash executor can be overridden in `agent.cordis.yml` under `gitbash-executor`:
+
+| Option | Default | Meaning |
+| :-- | :-- | :-- |
+| `shellPath` | auto-detected | Fixed Git Bash path (e.g. `C:\\Program Files\\Git\\bin\\bash.exe`) |
+| `timeoutMs` | 120000 | Per-command timeout (ms) |
+| `maxTimeoutMs` | 600000 | Maximum timeout a request may ask for |
+| `maxOutputBytes` | 64000 | Per-call output cap |
+| `maxSpillBytes` | 67108864 | Output spill-to-disk cap |
+| `graceMs` | 3000 | Grace period after timeout |
+
+Detection order: `GIT_BASH` -> `Program Files\\Git` -> `Program Files (x86)\\Git` -> `LOCALAPPDATA\\Programs\\Git` -> PATH.
+
 ## Materialization policy
 
 - No target directory -> write all preset files and a version marker.
