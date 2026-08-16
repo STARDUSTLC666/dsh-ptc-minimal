@@ -275,7 +275,14 @@ export function apply(ctx, config) {
       if (mode !== undefined && mode !== 'danger-full-access') {
         throw new Error(gateMessage(mode))
       }
-      const running = spawnShell(spec, resolved.maxOutputBytes, spec.signal)
+      const fused = timeoutSignal(spec.signal, spec.timeoutMs)
+      let running
+      try {
+        running = spawnShell(spec, resolved.maxOutputBytes, fused.signal)
+      } catch (error) {
+        fused.dispose()
+        throw error
+      }
       const collected = {
         stdout: running.collected.stdout,
         stderr: running.collected.stderr,
@@ -294,7 +301,7 @@ export function apply(ctx, config) {
         signal: null,
         done: running.done.then((outcome) => {
           if (proc.status === 'running') {
-            proc.status = spec.signal?.aborted === true || outcome.signal !== null
+            proc.status = fused.timedOut() || spec.signal?.aborted === true || outcome.signal !== null
               ? 'killed'
               : 'completed'
           }
@@ -303,7 +310,7 @@ export function apply(ctx, config) {
         }, (error) => {
           proc.status = 'killed'
           spawnFailureNote = spawnError(resolved.shellPath, spec.workdir, error).message
-        }),
+        }).finally(() => fused.dispose()),
         readOutput: () => {
           const out = collected.stdout.readFrom(stdoutOffset)
           const err = collected.stderr.readFrom(stderrOffset)

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { detectShellPath, resolveConfig, toWindowsPath } from '../presets/ptc-minimal/gitbash-executor.mjs'
+import { apply, detectShellPath, resolveConfig, toWindowsPath } from '../presets/ptc-minimal/gitbash-executor.mjs'
 
 const win = process.platform === 'win32'
 
@@ -29,6 +29,32 @@ test('resolveConfig defaults', () => {
   assert.equal(resolved.maxOutputBytes, 64000)
   assert.equal(resolved.graceMs, 3000)
   assert.equal(typeof resolved.shellPath, 'string')
+})
+
+test('start() applies the request timeout to background shells', async () => {
+  let capturedSignal
+  let providedShell
+  const fakeHandle = {
+    done: new Promise(() => {}),
+    collected: {
+      stdout: { readFrom: () => ({ text: '', nextOffset: 0, lossy: false }) },
+      stderr: { readFrom: () => ({ text: '', nextOffset: 0, lossy: false }) },
+    },
+    terminate: () => {},
+  }
+  const ctx = {
+    get(name) {
+      if (name === 'subprocess') return { spawn: (spec) => { capturedSignal = spec.signal; return fakeHandle } }
+      if (name === 'sandboxPolicy') return { defaultMode: 'danger-full-access', resolve: () => ({ mode: 'danger-full-access' }) }
+      return undefined
+    },
+    provide(_name, shell) { providedShell = shell },
+  }
+  apply(ctx, { shellPath: process.execPath, timeoutMs: 30, maxTimeoutMs: 30, graceMs: 10 })
+  const proc = providedShell.start(providedShell.resolve({ command: 'sleep 10' }))
+  await new Promise((resolvePromise) => setTimeout(resolvePromise, 80))
+  assert.equal(capturedSignal.aborted, true)
+  proc.kill()
 })
 
 test('resolveConfig rejects invalid timer values', () => {
