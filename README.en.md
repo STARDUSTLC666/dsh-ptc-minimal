@@ -7,7 +7,7 @@
 
 - **RL-aligned**: the whole system prompt is one sentence — `You are a helpful software engineer assistant.` — close to the compact instruction distribution used during RL fine-tuning, without long-prompt format bias or context noise.
 - **Complete toolset**: inherits the full PTC toolset — Code Mode SDK multi-step orchestration, files and search, Shell, Skills, plan mode, goals, subagents, and workflows.
-- **Gray-box reasoning**: Let's pack thinking and acting into one TypeScript program. We orchestrate multi-step work first, then execute it once — a built-in chain-of-thought channel without extra turns.
+- **We / Let's reasoning**: the Code Mode SDK packs thinking and doing into one TypeScript program, orchestrating multi-step operations before executing them once. This matches the high-scoring Minimal trajectory in DeepSeek's official Project2 V4.1b runs (99/96), where reasoning is dominated by `we` / `let's` instead of the standard-like `let me` / `I` blocks seen at 91/92.
 - **Git Bash on Windows**: ships a preset-local Git Bash executor (GIT_BASH -> Program Files\Git -> LOCALAPPDATA\Git -> PATH). The bash tool is no longer disabled on Windows; pwsh remains available as a fallback.
 
 ## Installation
