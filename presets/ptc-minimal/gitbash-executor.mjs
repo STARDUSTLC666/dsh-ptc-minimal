@@ -74,7 +74,6 @@ function shellPathCandidates(env) {
     env.ProgramFiles === undefined ? undefined : `${env.ProgramFiles}\\Git\\bin\\bash.exe`,
     env['ProgramFiles(x86)'] === undefined ? undefined : `${env['ProgramFiles(x86)']}\\Git\\bin\\bash.exe`,
     env.LOCALAPPDATA === undefined ? undefined : `${env.LOCALAPPDATA}\\Programs\\Git\\bin\\bash.exe`,
-    'D:\\applications\\Git\\bin\\bash.exe',
   ]
   if (typeof env.PATH === 'string' && env.PATH.length > 0) {
     for (const dir of env.PATH.split(';')) {
