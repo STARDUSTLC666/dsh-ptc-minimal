@@ -10,8 +10,7 @@
   让模型按训练时的节奏干活。
 - **工具完整**：完整继承 PTC 模式的全部工具 —— Code Mode SDK 多步编排、
   文件读写与检索、Shell、Skills、计划、目标、子代理、工作流，一个不少。
-- **灰测级别思维链**：Code Mode SDK 把"想"和"做"装进一个 TypeScript 程序：
-  多步操作先编排、再一次执行，等于内置了灰测通道的思维链，还不占额外回合。
+- **灰测级别思维链**：Let's pack thinking and doing into one TypeScript program. We orchestrate multi-step operations first, then execute them once — a built-in chain-of-thought channel without extra turns.
 - **Windows 保持 bash**：预设内置 Git Bash executor（自动探测 GIT_BASH → Program Files\Git → LOCALAPPDATA\Git → PATH），`bash` 工具不再在 Windows 上被禁用；pwsh 仍保留为备用。
 
 ## 安装

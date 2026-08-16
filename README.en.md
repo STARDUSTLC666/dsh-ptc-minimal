@@ -7,7 +7,7 @@
 
 - **RL-aligned**: the whole system prompt is one sentence — `You are a helpful software engineer assistant.` — close to the compact instruction distribution used during RL fine-tuning, without long-prompt format bias or context noise.
 - **Complete toolset**: inherits the full PTC toolset — Code Mode SDK multi-step orchestration, files and search, Shell, Skills, plan mode, goals, subagents, and workflows.
-- **Gray-box reasoning**: the Code Mode SDK packs thinking and acting into one TypeScript program: multi-step work is orchestrated first, then executed once — a built-in chain-of-thought channel without extra turns.
+- **Gray-box reasoning**: Let's pack thinking and acting into one TypeScript program. We orchestrate multi-step work first, then execute it once — a built-in chain-of-thought channel without extra turns.
 - **Git Bash on Windows**: ships a preset-local Git Bash executor (GIT_BASH -> Program Files\Git -> LOCALAPPDATA\Git -> PATH). The bash tool is no longer disabled on Windows; pwsh remains available as a fallback.
 
 ## Installation
