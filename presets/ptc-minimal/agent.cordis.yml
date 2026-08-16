@@ -39,6 +39,33 @@
   name: '@deepseek-ai/dsh-tool-pwsh'
   disabled: !!js process.platform !== 'win32'
 
+# Windows Git Bash shell stack. The preset-local executor runs every `bash`
+# call through Git for Windows bash, keeping the model-facing tool name and
+# stateless semantics identical to the POSIX `tool-bash` row above. Only
+# mounted on win32; the POSIX host keeps the official bash runner.
+- id: gitbash-shell
+  name: cordis:group
+  group: true
+  disabled: !!js process.platform !== 'win32'
+  isolate:
+    shell: true
+  config:
+    - id: gitbash-executor
+      name: ./gitbash-executor.mjs
+      config:
+        # 留空：executor 自动探测 GIT_BASH → 常见安装目录 → PATH → 'bash'
+        # 如需固定路径可显式写 shellPath: 'C:\\Program Files\\Git\\bin\\bash.exe'
+        timeoutMs: 120000
+        maxTimeoutMs: 600000
+        maxOutputBytes: 64000
+        maxSpillBytes: 67108864
+        graceMs: 3000
+
+    - id: tool-bash-win
+      name: '@deepseek-ai/dsh-tool-bash'
+      config:
+        enableRunInBackground: false
+
 # ── filesystem ──────────────────────────────────────────────────────────────
 
 # Both register into the host `tools` registry and provide nothing, so

@@ -1,7 +1,7 @@
 {
   "name": "dsh-ptc-minimal",
-  "version": "0.1.0",
-  "description": "DSH 插件：极简 PTC 模式 —— 对齐 RL 训练的一句话提示词，继承 PTC 全量工具，Code Mode SDK 内置灰测级思维链",
+  "version": "0.2.0",
+  "description": "DSH 插件：极简 PTC 模式 —— RL 对齐的一句话提示词 + PTC 全量工具；Windows 自动启用 Git Bash，让 bash 工具与 RL 训练分布保持一致。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {

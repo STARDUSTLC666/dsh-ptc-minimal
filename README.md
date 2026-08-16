@@ -1,7 +1,7 @@
 # dsh-ptc-minimal
 
 > 极简提示词 × PTC 全能力 —— 一个更"干净"的编码 Agent。
-> 安装即获得新的 Agent 模式：**极简 PTC 模式**。
+> 安装即获得新的 Agent 模式：**极简 PTC 模式**；Windows 自动启用 Git Bash，bash 工具与 RL 训练分布对齐。
 
 ## 卖点
 
@@ -12,13 +12,14 @@
   文件读写与检索、Shell、Skills、计划、目标、子代理、工作流，一个不少。
 - **灰测级别思维链**：Code Mode SDK 把"想"和"做"装进一个 TypeScript 程序：
   多步操作先编排、再一次执行，等于内置了灰测通道的思维链，还不占额外回合。
+- **Windows 保持 bash**：预设内置 Git Bash executor（自动探测 GIT_BASH → Program Files\Git → LOCALAPPDATA\Git → PATH），`bash` 工具不再在 Windows 上被禁用；pwsh 仍保留为备用。
 
 ## 安装
 
 1. 把本包加入 web profile（`package.json`）：
 
    ```json
-   "dependencies": { "dsh-ptc-minimal": "^0.1.0" },
+   "dependencies": { "dsh-ptc-minimal": "^0.2.0" },
    "dsh": { "profile": { "bundles": [..., "dsh-ptc-minimal"] } }
    ```
 
@@ -39,6 +40,7 @@ dsh-ptc-minimal/
 ├── lib/index.js                  # 宿主插件：物化 ptc-minimal 预设到用户预设根目录
 └── presets/ptc-minimal/          # 内置 Agent 模式（极简提示词 + PTC 全能力）
     ├── agent.cordis.yml
+    ├── gitbash-executor.mjs      # Windows Git Bash 探测与执行器（零依赖）
     └── preset.yml
 ```
 
