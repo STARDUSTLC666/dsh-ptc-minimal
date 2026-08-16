@@ -28,7 +28,8 @@
     "deepseek-harness",
     "plugin",
     "agent-preset",
-    "code-mode"
+    "code-mode",
+    "dsh-plugin"
   ],
   "license": "MIT",
   "author": "stardustlc",
