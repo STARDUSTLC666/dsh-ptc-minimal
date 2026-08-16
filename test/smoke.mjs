@@ -1,12 +1,31 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 
 const plugin = await import('../lib/index.js')
 
 test('plugin exposes the preset materializer shape', () => {
   assert.equal(plugin.name, 'ptc-minimal-preset')
   assert.equal(typeof plugin.apply, 'function')
+})
+
+test('materializes all preset files including the git-bash executor', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'dsh-ptc-minimal-home-'))
+  const previous = process.env.DSH_HOME
+  process.env.DSH_HOME = dir
+  try {
+    plugin.apply({})
+    const preset = join(dir, '.agent-presets', 'ptc-minimal')
+    assert.ok(existsSync(join(preset, 'agent.cordis.yml')))
+    assert.ok(existsSync(join(preset, 'preset.yml')))
+    assert.ok(existsSync(join(preset, 'gitbash-executor.mjs')), 'Windows Git Bash executor must be materialized with the preset')
+  } finally {
+    if (previous === undefined) delete process.env.DSH_HOME
+    else process.env.DSH_HOME = previous
+    rmSync(dir, { recursive: true, force: true })
+  }
 })
 
 test('ships a ptc-minimal preset composition', () => {
