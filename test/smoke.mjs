@@ -12,7 +12,7 @@ test('plugin exposes the preset materializer shape', () => {
 })
 
 test('materializes all preset files including the git-bash executor', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-ptc-minimal-home-'))
+  const dir = mkdtempSync(join(tmpdir(), 'dsh-minimal-ptc-home-'))
   const previous = process.env.DSH_HOME
   process.env.DSH_HOME = dir
   try {

@@ -1,4 +1,4 @@
-# dsh-ptc-minimal
+# dsh-minimal-ptc
 
 > 极简提示词 × PTC 全能力 —— 一个更"干净"的编码 Agent。
 > 安装即获得新的 Agent 模式：**极简 PTC 模式**；Windows 自动启用 Git Bash，bash 工具与 RL 训练分布对齐。
@@ -21,11 +21,11 @@
 1. 把本包加入 web profile（`package.json`）：
 
    ```json
-   "dependencies": { "dsh-ptc-minimal": "^0.3.0" },
-   "dsh": { "profile": { "bundles": [..., "dsh-ptc-minimal"] } }
+   "dependencies": { "dsh-minimal-ptc": "^0.4.0" },
+   "dsh": { "profile": { "bundles": [..., "dsh-minimal-ptc"] } }
    ```
 
-   本地开发也可以用 link：`"dsh-ptc-minimal": "link:E://deepseek//dsh-ptc-minimal"`。
+   本地开发也可以用 link：`"dsh-minimal-ptc": "link:E://deepseek//dsh-minimal-ptc"`。
 
 2. 在 profile 目录执行 `pnpm install`。
 
@@ -52,7 +52,7 @@
 ## 目录结构
 
 ```
-dsh-ptc-minimal/
+dsh-minimal-ptc/
 ├── cordis.patch.yml              # 插入宿主行（物化预设）
 ├── lib/index.js                  # 宿主插件：物化 ptc-minimal 预设到用户预设根目录
 └── presets/ptc-minimal/          # 内置 Agent 模式（极简提示词 + PTC 全能力）

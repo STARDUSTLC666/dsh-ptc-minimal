@@ -1,7 +1,7 @@
 {
-  "name": "dsh-ptc-minimal",
-  "version": "0.3.1",
-  "description": "DSH 插件：极简 PTC 模式 —— RL 对齐的一句话提示词 + PTC 全量工具；Windows 自动启用 Git Bash（预设文件完整物化、后台命令带超时），让 bash 工具与 RL 训练分布保持一致。",
+  "name": "dsh-minimal-ptc",
+  "version": "0.4.0",
+  "description": "Minimal prompt x full PTC tools for DeepSeek Harness - aligned with the Project2 we/let's trajectory (Minimal 99/96).",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -30,18 +30,24 @@
     "plugin",
     "agent-preset",
     "code-mode",
-    "dsh-plugin"
+    "dsh-plugin",
+    "deepseek",
+    "llm-agent",
+    "minimal",
+    "ptc",
+    "we-lets",
+    "chain-of-thought"
   ],
   "license": "MIT",
   "author": "stardustlc",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/STARDUSTLC666/dsh-ptc-minimal.git"
+    "url": "git+https://github.com/STARDUSTLC666/dsh-minimal-ptc.git"
   },
   "bugs": {
-    "url": "https://github.com/STARDUSTLC666/dsh-ptc-minimal/issues"
+    "url": "https://github.com/STARDUSTLC666/dsh-minimal-ptc/issues"
   },
-  "homepage": "https://github.com/STARDUSTLC666/dsh-ptc-minimal#readme",
+  "homepage": "https://github.com/STARDUSTLC666/dsh-minimal-ptc#readme",
   "engines": {
     "node": ">=18"
   },

@@ -7,7 +7,7 @@ import { apply } from '../lib/index.js'
 import pkg from '../package.json' with { type: 'json' }
 
 test('materialization honors version marker and user-created directories', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-ptc-materialize-'))
+  const dir = mkdtempSync(join(tmpdir(), 'dsh-minimal-ptc-materialize-'))
   const previous = process.env.DSH_HOME
   process.env.DSH_HOME = dir
   const preset = join(dir, '.agent-presets', 'ptc-minimal')

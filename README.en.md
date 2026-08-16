@@ -1,4 +1,4 @@
-# dsh-ptc-minimal
+# dsh-minimal-ptc
 
 > Minimal prompt x full PTC capabilities — a cleaner coding agent.
 > Installing gives you a new agent mode: **Minimal PTC**, with Git Bash kept alive on Windows so the bash tool matches the RL training distribution.
@@ -15,11 +15,11 @@
 1. Add this package to a web profile (`package.json`):
 
    ```json
-   "dependencies": { "dsh-ptc-minimal": "^0.3.0" },
-   "dsh": { "profile": { "bundles": [..., "dsh-ptc-minimal"] } }
+   "dependencies": { "dsh-minimal-ptc": "^0.4.0" },
+   "dsh": { "profile": { "bundles": [..., "dsh-minimal-ptc"] } }
    ```
 
-   Local development can use a link: `"dsh-ptc-minimal": "link:E://deepseek//dsh-ptc-minimal"`.
+   Local development can use a link: `"dsh-minimal-ptc": "link:E://deepseek//dsh-minimal-ptc"`.
 
 2. Run `pnpm install` in the profile directory.
 
