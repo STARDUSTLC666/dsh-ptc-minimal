@@ -1,6 +1,6 @@
 {
   "name": "dsh-ptc-minimal",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "DSH 插件：极简 PTC 模式 —— RL 对齐的一句话提示词 + PTC 全量工具；Windows 自动启用 Git Bash（预设文件完整物化、后台命令带超时），让 bash 工具与 RL 训练分布保持一致。",
   "type": "module",
   "main": "lib/index.js",
