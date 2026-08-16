@@ -1,0 +1,8 @@
+# dsh-ptc-minimal 组合包补丁：向 profile 插入本插件的宿主行。
+#
+# 宿主行（name: dsh-ptc-minimal）在启动时把内置的 ptc-minimal 预设
+# 物化到用户预设根目录（$DSH_HOME/.agent-presets/ptc-minimal），
+# 安装即获得「极简 PTC 模式」Agent 模式。
+- insert:
+    - id: ptc-minimal-preset
+      name: 'dsh-ptc-minimal'
