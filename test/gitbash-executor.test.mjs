@@ -17,9 +17,13 @@ test('detectShellPath explicit config wins', () => {
   assert.equal(detectShellPath(explicit, {}), explicit)
 })
 
-test('detectShellPath honors GIT_BASH env', () => {
+test('detectShellPath honors GIT_BASH env on win32', { skip: !win }, () => {
   const env = { GIT_BASH: process.execPath }
   assert.equal(detectShellPath(undefined, env), process.execPath)
+})
+
+test('detectShellPath on POSIX returns bash regardless of GIT_BASH', { skip: win }, () => {
+  assert.equal(detectShellPath(undefined, { GIT_BASH: process.execPath }), 'bash')
 })
 
 test('resolveConfig defaults', () => {
