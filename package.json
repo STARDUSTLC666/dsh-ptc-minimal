@@ -49,7 +49,7 @@
   },
   "homepage": "https://github.com/STARDUSTLC666/dsh-minimal-ptc#readme",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
     "test": "node --test"
