@@ -1,7 +1,7 @@
 # dsh-minimal-ptc
 
 > 极简提示词 × PTC 全能力 —— 一个更"干净"的编码 Agent。
-> 安装即获得新的 Agent 模式：**极简 PTC 模式**；Windows 自动启用 Git Bash，bash 工具与 RL 训练分布对齐。
+> 安装即获得新的 Agent 模式：**极简 PTC 模式**；Windows 自动启用 Git Bash 与持久 PowerShell（对齐 dsh-v0.1.1-rc.1）。
 
 ## 卖点
 
@@ -14,7 +14,8 @@
   多步操作先编排、再一次执行。这与 DeepSeek 官方跑分环境（Project2 V4.1b）中
   Minimal 高分轨迹一致：99/96 的两跑以 `we` / `let's` 为主，而不是
   Standard/PTC 常见的 `let me` / `I` 长块。
-- **Windows 保持 bash**：预设内置 Git Bash executor（自动探测 GIT_BASH → Program Files\Git → LOCALAPPDATA\Git → PATH），`bash` 工具不再在 Windows 上被禁用；pwsh 仍保留为备用。
+- **Windows 保持 bash**：预设内置 Git Bash executor（自动探测 GIT_BASH → Program Files\Git → LOCALAPPDATA\Git → PATH），`bash` 工具不再在 Windows 上被禁用。
+- **Windows 持久 PowerShell**：对齐 `dsh-v0.1.1-rc.1` 的 minimal 预设，`pwsh` 使用持久 PTY 会话，cwd、变量、函数跨调用保留。
 
 ## 安装
 

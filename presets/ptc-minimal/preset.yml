@@ -1,2 +1,2 @@
 name: 极简 PTC 模式
-description: 提示词与极简模式一致（一句固定人格，无运行时上下文与附加指令），保留 PTC 模式的全部能力：Code Mode SDK 多步工具编排，以及文件、Shell、检索、Skills、计划、目标、子代理和工作流。Windows 下通过预设内置 Git Bash executor 保持 bash 工具可用，与 RL 训练动作分布对齐。
+description: 提示词与极简模式一致（一句固定人格，无运行时上下文与附加指令），保留 PTC 模式的全部能力：Code Mode SDK 多步工具编排，以及文件、Shell、检索、Skills、计划、目标、子代理和工作流。Windows 上 Shell 为持久 PowerShell + Git Bash，并对齐 dsh-v0.1.1-rc.1 子代理配置。

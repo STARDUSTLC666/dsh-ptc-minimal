@@ -1,6 +1,6 @@
 {
   "name": "dsh-minimal-ptc",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Minimal prompt x full PTC tools for DeepSeek Harness - aligned with the Project2 we/let's trajectory (Minimal 99/96).",
   "type": "module",
   "main": "lib/index.js",

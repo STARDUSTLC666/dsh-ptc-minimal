@@ -37,7 +37,41 @@
 
 - id: tool-pwsh
   name: '@deepseek-ai/dsh-tool-pwsh'
+  disabled: true
+
+# Windows persistent PowerShell PTY stack (rc.1 minimal parity). Replaces the
+# one-shot pwsh row on win32; the gitbash group below keeps a stateless bash
+# tool beside it. The model-facing tool name remains `pwsh`.
+- id: persistent-shell
+  name: cordis:group
+  group: true
   disabled: !!js process.platform !== 'win32'
+  isolate:
+    terminals: true
+  config:
+    - id: pty
+      name: '@deepseek-ai/dsh-terminal'
+
+    - id: terminal-pwsh
+      name: '@deepseek-ai/dsh-terminal-bash'
+      disabled: !!js process.platform !== 'win32'
+      config:
+        shellDialect: pwsh
+        timeoutMs: 300000
+
+    - id: persistent-pwsh
+      name: '@deepseek-ai/dsh-tool-pwsh-persistent'
+      disabled: !!js process.platform !== 'win32'
+      config:
+        timeoutMs: 300000
+        description: |-
+          Run commands in a PowerShell shell
+          * When invoking this tool, the contents of the "command" parameter does NOT need to be XML-escaped.
+          * You don't have access to the internet via this tool.
+          * State is persistent across command calls and discussions with the user.
+          * Use native Windows paths (C:\...) and $env:NAME variables; this is PowerShell, not bash.
+          * Please avoid commands that may produce a very large amount of output.
+          * Please run long lived commands in the background, e.g. 'Start-Job' or start a server with Start-Process.
 
 # Windows Git Bash shell stack. The preset-local executor runs every `bash`
 # call through Git for Windows bash, keeping the model-facing tool name and
@@ -191,7 +225,7 @@
       config:
         provider: codex
         toolName: subagent_codex
-        enableRunInBackground: false
+        backgroundMode: one-shot
         maxDepth: provider-managed
 
     - id: tool-subagent-claude-code
@@ -200,7 +234,7 @@
       config:
         provider: claude-code
         toolName: subagent_claude_code
-        enableRunInBackground: false
+        backgroundMode: one-shot
         maxDepth: provider-managed
 
     - id: workflow-worker-thread
